@@ -1,3 +1,10 @@
+Back-end of my personal project made for my accreditation "Bac +2 web developper".
+Project realized with a real 2D/3D artist.
+The goal is to let her read, add, update, delete her gallery of projects.
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

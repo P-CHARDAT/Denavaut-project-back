@@ -1,0 +1,1 @@
+TRUNCATE TABLE `administrator` WHERE id=1;

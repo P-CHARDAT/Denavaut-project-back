@@ -16,10 +16,15 @@
     "prettier": "^2.3.2"
   },
   "scripts": {
+    "create-db-migration": "db-migrate create $NAME --sql-file",
+    "migrUp": "db-migrate up",
+    "rollback-last-db-migration": "db-migrate down",
     "start": "nodemon src/server.js",
     "dev": "nodemon src/server.js",
+    "lint": "npx eslint --fix *.js src tests *.js",
     "format": "prettier --write \"src/**/*.+(js|jsx|json|yml|yaml|css|md|vue)\"",
-    "test": "NODE_ENV=test jest --maxWorkers=1 --detectOpenHandles --testTimeout=1000"
+    "test": "NODE_ENV=test jest --testRunner='jest-circus/runner' --maxWorkers=1",
+    "test:migrUp": "db-migrate up -e test"
   },
   "browserslist": {
     "production": [
@@ -34,12 +39,23 @@
     ]
   },
   "devDependencies": {
-    "jest": "^27.3.1",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^25.3.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.4.7",
+    "jest-circus": "^27.4.6",
     "nodemon": "^2.0.14",
     "supertest": "^6.1.6"
   },
   "jest": {
+    "testRunner": "jest-circus/runner",
     "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/setupTests.js"
+    ],
     "coveragePathIgnorePatterns": [
       "/node_modules/"
     ]
